@@ -16,7 +16,7 @@ import java.util.List;
 @Table(name = "doctor")
 public class DoctorEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_doctor",nullable = false,unique = true)
     private Long idDoctor;
     @Column(length = 30,nullable = false)
@@ -26,5 +26,8 @@ public class DoctorEntity {
     @Column(name = "phone_number",length = 20)
     private String phoneNumber;
     private String speciality;
+    @OneToOne
+    @JoinColumn(name = "id_patient")
+    private PatientEntity patientEntity;
 
 }
